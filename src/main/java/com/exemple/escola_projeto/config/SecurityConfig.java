@@ -4,7 +4,6 @@ import java.util.Arrays;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -34,14 +33,12 @@ public class SecurityConfig {
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(authorizeRequests ->
                 authorizeRequests
-                    // AQUI ESTÁ A MÁGICA PARA O SEU TESTE ATUAL:
-                    // Permite todas as requisições GET para "/usuarios/senhas" SEM AUTENTICAÇÃO
-                    .requestMatchers(HttpMethod.POST, "/login").permitAll()  
-                    .requestMatchers(HttpMethod.POST, "/alunos").permitAll()
-                    .requestMatchers(HttpMethod.POST, "/maes").permitAll()
-                    .requestMatchers(HttpMethod.POST, "/pais").permitAll()
-                    .requestMatchers(HttpMethod.POST, "/observacoes").permitAll()
-                    
+                    // Usando AntPathRequestMatcher para especificar o método POST
+                    .requestMatchers(new org.springframework.security.web.util.matcher.AntPathRequestMatcher("/login", "POST")).permitAll()
+                    .requestMatchers(new org.springframework.security.web.util.matcher.AntPathRequestMatcher("/alunos", "POST")).permitAll()
+                    .requestMatchers(new org.springframework.security.web.util.matcher.AntPathRequestMatcher("/maes", "POST")).permitAll()
+                    .requestMatchers(new org.springframework.security.web.util.matcher.AntPathRequestMatcher("/pais", "POST")).permitAll()
+                    .requestMatchers(new org.springframework.security.web.util.matcher.AntPathRequestMatcher("/observacoes", "POST")).permitAll()
                     .anyRequest().authenticated()
             )
             // Habilita a autenticação HTTP Basic.
