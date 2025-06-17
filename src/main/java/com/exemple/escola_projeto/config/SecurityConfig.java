@@ -77,7 +77,7 @@ public class SecurityConfig {
 public CorsConfigurationSource corsConfigurationSource() {
     CorsConfiguration configuration = new CorsConfiguration();
     // Permite requisições da sua aplicação React
-    configuration.setAllowedOrigins(Arrays.asList("http://localhost:5173"));
+    configuration.setAllowedOrigins(Arrays.asList("http://localhost:5173","http://localhost:8081" ));
     // Define os métodos HTTP permitidos (GET, POST, etc.)
     configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
     // Permite todos os cabeçalhos na requisição
