@@ -11,7 +11,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.http.HttpMethod;
 
 @Configuration
 @EnableWebSecurity // Habilita a configuração de segurança web do Spring
@@ -26,15 +25,6 @@ public class SecurityConfig {
                                 .cors(Customizer.withDefaults())
                                 .csrf(csrf -> csrf.disable())
                                 .authorizeRequests()
-                                // Endpoints públicos para cadastro e login
-                                .antMatchers(HttpMethod.POST, "/alunos", "/pais", "/maes",
-                                                "/observacoes", "/login")
-                                .permitAll()
-                                // Todos os GET, PUT e DELETE exigem autenticação
-                                .antMatchers(HttpMethod.GET, "/**").authenticated()
-                                .antMatchers(HttpMethod.PUT, "/**").authenticated()
-                                .antMatchers(HttpMethod.DELETE, "/**").authenticated()
-                                // Outros métodos são públicos
                                 .anyRequest().permitAll()
                                 .and()
                                 .httpBasic(Customizer.withDefaults());
