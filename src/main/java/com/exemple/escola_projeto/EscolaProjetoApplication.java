@@ -16,16 +16,16 @@ public class EscolaProjetoApplication {
         SpringApplication.run(EscolaProjetoApplication.class, args);
     }
 
-    @Bean
-    public CommandLineRunner commandLineRunner(PasswordEncoder passwordEncoder) {
-        return args -> {
-            String senhaOriginal = "senha123"; // A senha que você quer hashear (ex: a do seu usuário 'admin')
-            String senhaHasheada = passwordEncoder.encode(senhaOriginal);
-            System.out.println("====================================================================");
-            System.out.println("SENHA ORIGINAL: " + senhaOriginal);
-            System.out.println("SENHA HASHEADA (BCrypt): " + senhaHasheada);
-            System.out.println("COPIE A SENHA HASHEADA ACIMA PARA ATUALIZAR NO BANCO.");
-            System.out.println("====================================================================");
-        };
-    }
+    // @Bean
+    // public CommandLineRunner commandLineRunner(PasswordEncoder passwordEncoder) {
+    //     return args -> {
+    //         String senhaOriginal = "senha123"; // A senha que você quer hashear (ex: a do seu usuário 'admin')
+    //         String senhaHasheada = passwordEncoder.encode(senhaOriginal);
+    //         System.out.println("====================================================================");
+    //         System.out.println("SENHA ORIGINAL: " + senhaOriginal);
+    //         System.out.println("SENHA HASHEADA (BCrypt): " + senhaHasheada);
+    //         System.out.println("COPIE A SENHA HASHEADA ACIMA PARA ATUALIZAR NO BANCO.");
+    //         System.out.println("====================================================================");
+    //     };
+    // }
 }
