@@ -18,17 +18,16 @@ public class AuthService {
     private PasswordEncoder passwordEncoder;
 
     public UsuarioDTO autenticar(String login, String senhaRecebida) {
-        // 1. Buscar o usuário pelo login
+        
         Usuario usuario = usuarioRepository.findByLogin(login)
                 .orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado com o login: " + login));
 
-        // 2. Comparar a senha recebida com a senha hasheada do banco
+        
         if (passwordEncoder.matches(senhaRecebida, usuario.getSenha())) {
-            // Senhas coincidem, autenticação bem-sucedida
-            // Retornar um DTO para não expor a senha ou outros dados sensíveis da entidade
+            
             return new UsuarioDTO(usuario.getId(), usuario.getLogin());
         } else {
-            // Senhas não coincidem
+            
             throw new BadCredentialsException("Senha inválida");
         }
     }

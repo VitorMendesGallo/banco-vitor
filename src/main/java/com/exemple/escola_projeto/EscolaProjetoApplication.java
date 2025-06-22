@@ -16,7 +16,7 @@ public class EscolaProjetoApplication {
     // @Bean
     // public CommandLineRunner commandLineRunner(PasswordEncoder passwordEncoder) {
     //     return args -> {
-    //         String senhaOriginal = "senha123"; // A senha que você quer hashear (ex: a do seu usuário 'admin')
+    //         String senhaOriginal = "HorizonteNovo@2012"; // A senha que você quer hashear (ex: a do seu usuário 'admin')
     //         String senhaHasheada = passwordEncoder.encode(senhaOriginal);
     //         System.out.println("====================================================================");
     //         System.out.println("SENHA ORIGINAL: " + senhaOriginal);
