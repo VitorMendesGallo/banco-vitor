@@ -2,22 +2,19 @@ package com.exemple.escola_projeto.dto;
 
 public class UsuarioDTO {
     private Long id;
+
     private String login;
 
-    // Construtor padrão (opcional, mas boa prática se você tiver outros construtores)
     public UsuarioDTO() {
-        
     }
 
-    // Construtor que recebe os dados da entidade Usuario (útil para mapeamento)
     public UsuarioDTO(Long id, String login) {
         this.id = id;
         this.login = login;
     }
 
-    // Getters e Setters
     public Long getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(Long id) {
@@ -25,7 +22,7 @@ public class UsuarioDTO {
     }
 
     public String getLogin() {
-        return login;
+        return this.login;
     }
 
     public void setLogin(String login) {

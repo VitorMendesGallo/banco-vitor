@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +19,7 @@ import com.exemple.escola_projeto.dto.PaiDto;
 import com.exemple.escola_projeto.model.Pai;
 import com.exemple.escola_projeto.service.PaiService;
 
+@CrossOrigin(origins = "https://novohorizonteteresopolis.com.br")
 @RestController
 @RequestMapping("/pais")
 public class PaiController {
@@ -63,7 +65,6 @@ public class PaiController {
         return ResponseEntity.ok(listaDto);
     }
 
-    
     @PostMapping
     public ResponseEntity<?> salvarPai(@RequestBody Pai pai) {
         try {

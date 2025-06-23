@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +19,7 @@ import com.exemple.escola_projeto.dto.ObservacoesDto;
 import com.exemple.escola_projeto.model.Observacoes;
 import com.exemple.escola_projeto.service.ObservacoesService;
 
+@CrossOrigin(origins = "https://novohorizonteteresopolis.com.br")
 @RestController
 @RequestMapping("/observacoes")
 public class ObservacoesController {
@@ -52,7 +54,8 @@ public class ObservacoesController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Observacoes> atualizarObservacoes(@PathVariable Long id, @RequestBody Observacoes updatedObservacoes) {
+    public ResponseEntity<Observacoes> atualizarObservacoes(@PathVariable Long id,
+            @RequestBody Observacoes updatedObservacoes) {
         try {
             Observacoes observacoes = observacoesService.atualizar(id, updatedObservacoes);
             return ResponseEntity.ok(observacoes);

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +19,7 @@ import com.exemple.escola_projeto.dto.AlunoDto;
 import com.exemple.escola_projeto.model.Aluno;
 import com.exemple.escola_projeto.service.AlunoService;
 
+@CrossOrigin(origins = "https://novohorizonteteresopolis.com.br")
 @RestController
 @RequestMapping("/alunos")
 public class AlunoController {
@@ -50,15 +52,16 @@ public class AlunoController {
 
     @GetMapping("/buscarPorCpf")
     public List<AlunoDto> buscarAlunosPorCpf(@RequestParam String cpf) {
-    return alunoService.buscarPorCpf(cpf);
-}
+        return alunoService.buscarPorCpf(cpf);
+    }
+
     @GetMapping("/{id}/resumo")
     public ResponseEntity<AlunoDto> buscarAlunoResumo(@PathVariable Long id) {
         AlunoDto alunoDto = alunoService.buscarAlunoDto(id);
         return ResponseEntity.ok(alunoDto);
     }
 
-     @PostMapping
+    @PostMapping
     public ResponseEntity<?> salvarAluno(@RequestBody Aluno aluno) {
         try {
             Aluno alunoSalvo = alunoService.salvar(aluno);
